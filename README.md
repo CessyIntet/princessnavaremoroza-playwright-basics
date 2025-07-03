@@ -1,2 +1,2 @@
-# princessnavaremoroza-playwright-basics
+# 🚀 princessnavaremoroza-playwright-basics for Code Blossom
 Playwright basics
