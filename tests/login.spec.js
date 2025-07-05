@@ -1,12 +1,4 @@
-// This is an example of Playwright test
-// You can run this file using the command: npx playwright test test/example.spec.js
-//SPEC FILE = TEST FILE
-// Test = test case/Test idea
-// @ts-check
 import { test, expect } from '@playwright/test';
-// ARANGE --> ACT --> ASSERT
-// This is a test that logs into the Sauce Demo website and checks if the 
-// login was successful by verifying the presence of the "Swag Labs" text.
 
 test('should successfuly login and verify swag labs logo is visible', async ({ page }) => {
   await page.goto('https://www.saucedemo.com/');
