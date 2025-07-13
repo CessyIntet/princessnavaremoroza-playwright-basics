@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "Playwright basics",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "login-test": "npx playwright test tests/login.spec.js --project chromium"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/CessyIntet/princessnavaremoroza-playwright-basics.git"
