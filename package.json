@@ -4,7 +4,11 @@
   "description": "Playwright basics",
   "main": "index.js",
   "scripts": {
-    "login-test": "npx playwright test tests/login.spec.js --project chromium"
+    "login-test": "npx playwright test tests/login.spec.js --project chromium",
+    "login-test-trace": "npx playwright test tests/login.spec.js --project chromium --trace on",
+    "login-test-ui": "npx playwright test tests/login.spec.js --project chromium --ui",
+    "test-report": "npx playwright show-report",
+    "auto-exec.spec.js": "npx playwright test tests/automation-exercise/auto-exec.spec.js"
   },
   "repository": {
     "type": "git",
