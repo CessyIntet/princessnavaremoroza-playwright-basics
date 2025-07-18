@@ -8,7 +8,8 @@
     "login-test-trace": "npx playwright test tests/login.spec.js --project chromium --trace on",
     "login-test-ui": "npx playwright test tests/login.spec.js --project chromium --ui",
     "test-report": "npx playwright show-report",
-    "auto-exec.spec.js": "npx playwright test tests/automation-exercise/auto-exec.spec.js"
+    "auto-exec.spec.js": "npx playwright test tests/automation-exercise/auto-exec.spec.js",
+    "cart.spec.js": "npx playwright test tests/automation-exercise/cart.spec.js"
   },
   "repository": {
     "type": "git",

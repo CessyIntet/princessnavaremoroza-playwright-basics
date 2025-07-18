@@ -1,6 +1,13 @@
 import { test, expect } from '@playwright/test';
 
-test.describe('Automation Exercise-Navigation', () => {
+
+// example use of single tagging of test - > { tag: '@Happy Path' },
+// example use of multiple tagging of test - > { tag: ["Regression-testing", "@Sprint-1", "@Smoke-Testing"] },
+
+test.describe('Automation Exercise-Navigation', { 
+  tag: ["@Regression-testing", "@Sprint-1", "@Smoke-Testing"], 
+}, () => {
+
     //Tests should run in isolation (don't depend on each other)
 
     // test.beforeAll(async () => {
@@ -26,7 +33,7 @@ test.describe('Automation Exercise-Navigation', () => {
 
     // });
 
-    test('Should successfully visit the product page', async ({ page }) => {
+    test('Should successfully visit the product page', { tag: '@Happy-Path' }, async ({ page }) => {
         // Step 1
         await test.step('Navigate to the Product Page', async () => {
         await page.locator('a[href="/products"]').click();
@@ -73,8 +80,16 @@ test.describe('Automation Exercise-Navigation', () => {
         `);
     });
 
-    test('test3', async ({ page }) => {
-        console.log('This is test 3');
+    test('Should successfully search "Summer White Top"',  {
+        annotation: {
+        type: 'issue',
+        description: "can't search the product - https://github.com/CessyIntet/princessnavaremoroza-playwright-basics/issues/1#issue-3239067672",
+      },
+      tag: '@Functional-Testing'
+    }, async ({ page }) => {
+      await page.locator('a[href="/products"]').click();
+      await page.getByRole('textbox', { name: 'Search Product' }).fill('summer white top');
+      await page.getByRole('button', { name: '' }).click();
     });
 });
 
