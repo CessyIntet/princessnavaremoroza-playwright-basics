@@ -2,15 +2,30 @@
 
 
 import { test, expect } from '@playwright/test';
+import { STORAGE_STATE } from '../playwright.config';
+
+test.use({ storageState: STORAGE_STATE });
+
 
 test.describe('July-18-Deployment', {
   tag: ['@Regression-Testing', '@Sprint-2', '@Smoke-Testing'],
 }, () => {
 
 
-      test('User can add single item to cart', { tag: '@Cart'}, async ({ page }) => {
-      
+    test('Should show the add to cart button', { tag: '@Happy-Path'}, async ({ page }) => {
+      await page.goto('/inventory.html');
+      await expect(page.locator('[data-test="shopping-cart-link"]')).toBeVisible();
+    });
 
+    test('Swag Labs text should be visible', { tag: '@Happy-Path'}, async ({ page }) => {
+      await page.goto('/inventory.html');
+      await expect(page.locator('text=Swag Labs')).toBeVisible();
+    });
+
+
+      test('User can add single item to cart and checkout the item', { tag: '@Cart'}, async ({ page }) => {
+        await page.goto('/inventory.html');
+      
         await test.step('Add to cart Sauce Labs Backpack', async () => {
           await page.locator('[data-test="add-to-cart-sauce-labs-backpack"]').click();
         });
@@ -59,7 +74,8 @@ test.describe('July-18-Deployment', {
       });
 
 
-          test('User can add and remove item to cart', { tag: '@Cart'}, async ({ page }) => {
+          test('User can add the item to cart, remove the item, and view the cart page', { tag: '@Cart'}, async ({ page }) => {
+            await page.goto('/inventory.html');
 
             await test.step('Add to cart Sauce Labs Backpack', async () => {
               await page.locator('[data-test="add-to-cart-sauce-labs-backpack"]').click();
@@ -81,17 +97,9 @@ test.describe('July-18-Deployment', {
 
         });
 
-      test('User should successfuly login and verify swag labs logo is visible', { tag: '@Happy-Path'}, async ({ page }) => {
-        
-        await test.step('Verify URL and the Swag Labs Header', async () => {
-          await expect(page).toHaveURL('https://www.saucedemo.com/inventory.html') 
-          await expect(page.getByText('Swag Labs')).toBeVisible();
-        });
-      });
-    
-      
 
       test('User should successfully visit About Page', { tag: '@Navigation-UI'}, async ({ page }) => {
+        await page.goto('/inventory.html');
 
         await test.step('Open side bar', async () => {
           await page.getByRole('button', { name: 'Open Menu' }).click();
@@ -112,7 +120,7 @@ test.describe('July-18-Deployment', {
       });
 
       test('Invalid log in due to wrong credentials', { tag: '@Negative-test'}, async ({ page }) => {
-
+        await page.goto('/');
         await page.locator('[data-test="username"]').fill('locked');
         await page.locator('[data-test="password"]').fill('secret');
         await page.locator('[data-test="login-button"]').click();

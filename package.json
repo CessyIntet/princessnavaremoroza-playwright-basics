@@ -11,7 +11,7 @@
     "test-report": "npx playwright show-report",
     "auto-exec.spec": "npx playwright test tests/automation-exercise/auto-exec.spec.ts",
     "cart.spec": "npx playwright test tests/automation-exercise/cart.spec.ts",
-    "auth-setup": "npx playwright test auth.setup.ts --project setup",
+    "auth-setup": "npx playwright test auth.setup.ts --project setup --ui",
     "e2e-test": "npx playwright test tests/e2e.spec.ts --project e2e"
   },
   "repository": {

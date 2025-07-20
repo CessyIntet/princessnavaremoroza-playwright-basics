@@ -11,8 +11,8 @@ setup('Do Login', async ({ page }) => {
           await page.locator('[data-test="password"]').fill(process.env.SAUCEDEMO_PASSWORD!);
   
           await page.locator('[data-test="login-button"]').click();
-
-        //   await expect(page.getByText('Swag Labs')).toBeVisible();
+          
+          await expect(page.getByText('Swag Labs')).toBeVisible();
           
           await page.context().storageState({ path: STORAGE_STATE });
 });
