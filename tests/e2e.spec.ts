@@ -1,35 +1,15 @@
+//activity session 13
+
+
 import { test, expect } from '@playwright/test';
-
-// await test.step('test step name', async () => {
-//         ACTION
-//         });
-//  { tag: '@Happy-Path'},
-
 
 test.describe('July-18-Deployment', {
   tag: ['@Regression-Testing', '@Sprint-2', '@Smoke-Testing'],
 }, () => {
 
 
-  test.beforeEach(async ({ page }) => {
-      await page.goto('https://www.saucedemo.com/');
-    
-  });
       test('User can add single item to cart', { tag: '@Cart'}, async ({ page }) => {
-          await test.step('Input Username', async () => {
-
-          await page.locator('[data-test="username"]').fill('standard_user');
-          // await loginPage.InputUsername(process.env.SAUCEDEMO_USERNAME);
-        });
-        
-        await test.step('Input Password', async () => {
-          await page.locator('[data-test="password"]').fill('secret_sauce');
-          // await loginPage.InputPassword(process.env.SAUCEDEMO_PASSWORD);
-        });
-
-        await test.step('Click Login Button', async () => {
-          await page.locator('[data-test="login-button"]').click();
-        });
+      
 
         await test.step('Add to cart Sauce Labs Backpack', async () => {
           await page.locator('[data-test="add-to-cart-sauce-labs-backpack"]').click();
@@ -80,20 +60,6 @@ test.describe('July-18-Deployment', {
 
 
           test('User can add and remove item to cart', { tag: '@Cart'}, async ({ page }) => {
-              await test.step('Input Username', async () => {
-
-              await page.locator('[data-test="username"]').fill('standard_user');
-              // await loginPage.InputUsername(process.env.SAUCEDEMO_USERNAME);
-            });
-            
-            await test.step('Input Password', async () => {
-              await page.locator('[data-test="password"]').fill('secret_sauce');
-              // await loginPage.InputPassword(process.env.SAUCEDEMO_PASSWORD);
-            });
-
-            await test.step('Click Login Button', async () => {
-              await page.locator('[data-test="login-button"]').click();
-            });
 
             await test.step('Add to cart Sauce Labs Backpack', async () => {
               await page.locator('[data-test="add-to-cart-sauce-labs-backpack"]').click();
@@ -117,22 +83,6 @@ test.describe('July-18-Deployment', {
 
       test('User should successfuly login and verify swag labs logo is visible', { tag: '@Happy-Path'}, async ({ page }) => {
         
-
-        await test.step('Input Username', async () => {
-
-          await page.locator('[data-test="username"]').fill('standard_user');
-          // await loginPage.InputUsername(process.env.SAUCEDEMO_USERNAME);
-        });
-        
-        await test.step('Input Password', async () => {
-          await page.locator('[data-test="password"]').fill('secret_sauce');
-          // await loginPage.InputPassword(process.env.SAUCEDEMO_PASSWORD);
-        });
-
-        await test.step('Click Login Button', async () => {
-          await page.locator('[data-test="login-button"]').click();
-        });
-        
         await test.step('Verify URL and the Swag Labs Header', async () => {
           await expect(page).toHaveURL('https://www.saucedemo.com/inventory.html') 
           await expect(page.getByText('Swag Labs')).toBeVisible();
@@ -142,21 +92,6 @@ test.describe('July-18-Deployment', {
       
 
       test('User should successfully visit About Page', { tag: '@Navigation-UI'}, async ({ page }) => {
-        
-        await test.step('Input Username', async () => {
-
-          await page.locator('[data-test="username"]').fill('standard_user');
-          // await loginPage.InputUsername(process.env.SAUCEDEMO_USERNAME);
-        });
-        
-        await test.step('Input Password', async () => {
-          await page.locator('[data-test="password"]').fill('secret_sauce');
-          // await loginPage.InputPassword(process.env.SAUCEDEMO_PASSWORD);
-        });
-
-        await test.step('Click Login Button', async () => {
-          await page.locator('[data-test="login-button"]').click();
-        });
 
         await test.step('Open side bar', async () => {
           await page.getByRole('button', { name: 'Open Menu' }).click();
@@ -185,7 +120,4 @@ test.describe('July-18-Deployment', {
       });
 
 
-
-
 });
-

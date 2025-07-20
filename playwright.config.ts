@@ -1,13 +1,21 @@
 // @ts-check
 import { defineConfig, devices } from '@playwright/test';
+import dotenv from 'dotenv';
+import path from 'path';
 
 /**
  * Read environment variables from file.
  * https://github.com/motdotla/dotenv
  */
-// import dotenv from 'dotenv';
-// import path from 'path';
+
 // dotenv.config({ path: path.resolve(__dirname, '.env') });
+//for javascript
+// require("dotenv").config({ path: path.resolve(__dirname, "./.env") });
+// dotenv.config();
+
+dotenv.config({ path: path.resolve(__dirname, '.env') });
+
+export const STORAGE_STATE = path.join(__dirname, "./.auth/user.json");
 
 /**
  * @see https://playwright.dev/docs/test-configuration
@@ -29,21 +37,36 @@ export default defineConfig({
   use: {
     /* Base URL to use in actions like `await page.goto('/')`. */
     // baseURL: 'http://localhost:3000',
-    baseURL:'https://www.automationexercise.com/',
+    baseURL:'https://www.saucedemo.com',
+    
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
-    trace: 'on-first-retry',
+    trace: 'on-first-retry'
   },
-
-  /* Configure projects for major browsers */
+/* Configure projects for major browsers */
   projects: [
-    {
-      name: 'chromium',
-      use: { ...devices['Desktop Chrome'] },
+     {
+      name: "setup",
+      testMatch: "**/*.setup.ts",
     },
+    {
+      name: "e2e",
+      dependencies: ["setup"],
+      use: {
+        storageState: STORAGE_STATE,
+        ...devices["Desktop Chrome"],
+        launchOptions: {
+          args: ["--start-maximized"],
+        },
+      },
+    },
+    // {
+    //   name: 'chromium',
+    //   use: { ...devices['Desktop Chrome'] },
+    // },
 
     // {
-    //   name: 'firefox', 
+    //   name: 'firefox',
     //   use: { ...devices['Desktop Firefox'] },
     // },
 
@@ -80,4 +103,3 @@ export default defineConfig({
   //   reuseExistingServer: !process.env.CI,
   // },
 });
-
