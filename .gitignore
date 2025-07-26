@@ -3,9 +3,11 @@
 node_modules/
 /test-results/
 /playwright-report/
+/test-screenshots/
+/test.screenshot/
+/playwright/.report/
 /blob-report/
 /playwright/.cache/
 .env
 .auth/user.json
 .auth
-tests/test.screenshot/
