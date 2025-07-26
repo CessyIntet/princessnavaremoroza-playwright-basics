@@ -1,9 +1,11 @@
 name: Session 11 run basic PW Tests on CI
-on:
-  push:
-    branches: [ main, master ]
-  pull_request:
-    branches: [ main, master ]
+on: workflow_dispatch
+#  push:
+#    branches: [ main, master ]
+#  pull_request:
+#    branches: [ main, master ]
+# schedule:
+# - cron: '0 16 * * 3' # every Wednesday at 16:00 UTC - PH time Thursday 12:00 AM
 
 env:
     SAUCEDEMO_USERNAME: ${{ secrets.SAUCE_USERNAME }}
