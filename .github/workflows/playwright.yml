@@ -6,8 +6,8 @@ on:
     branches: [ main, master ]
 
 env:
-    SAUCE_USERNAME: ${{ secrets.SAUCE_USERNAME }}
-    SAUCE_PASSWORD: ${{ secrets.SAUCE_PASSWORD }}
+    SAUCEDEMO_USERNAME: ${{ secrets.SAUCE_USERNAME }}
+    SAUCEDEMO_PASSWORD: ${{ secrets.SAUCE_PASSWORD }}
     
     
 jobs:
